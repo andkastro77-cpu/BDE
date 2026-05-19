@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ST_Intersects</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="Estilo.css">
+</head>
+<body>
+  <h1>ST_Intersects</h1>
+
+  <h2>Descripcion de la funcion</h2>
+  <p>
+    <strong>ST_Intersects</strong> es una funcion espacial que permite saber si dos
+    geometrias tienen al menos un punto en comun.
+  </p>
+  <p>
+    Devuelve <strong>true</strong> si las geometrias se tocan, cruzan o superponen.
+    Devuelve <strong>false</strong> si estan separadas.
+  </p>
+
+ <h2>2. Ejemplo usando Mapa Bogota</h2>
+  <p>
+    En esta seccion usaremos datos geograficos reales publicados por IDECA y
+    disponibles en Mapa Bogota.
+  </p>
+
+  <div id="mapa" class="mapa">Cargando mapa...</div>
+
+  <div class="leyenda">
+    <p><span class="upl"></span> Unidades de Planeamiento Local</p>
+    <p><span class="metro"></span> Trazado de la Linea 1 del Metro</p>
+  </div>
+
+  <p>
+    Con estas dos capas podremos preguntar que Unidades de Planeamiento Local
+    son intersectadas por el trazado de la Linea 1 del Metro.
+  </p>
+
+  <p>
+    En terminos de PostGIS, la pregunta seria:
+  </p>
+
+  <pre><code>ST_Intersects(upl.geom, metro.geom)</code></pre>
+
+  <h3>Resultado de la interseccion</h3>
+  <p>
+    Este mapa muestra solo las Unidades de Planeamiento Local que intersectan
+    con el trazado de la Linea 1 del Metro.
+  </p>
+
+  <div id="mapa-interseccion" class="mapa">Cargando mapa...</div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+  <script src="ST_Intersects.js"></script>
+</body>
+</html>
